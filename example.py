@@ -20,7 +20,7 @@ if __name__ == '__main__':
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 
-    env = gym.make('Snake-v0' if len(sys.argv)<2 else sys.argv[1])
+    env = gym.make('LunarLander-v2' if len(sys.argv)<2 else sys.argv[1])
 
     # You provide the directory to write to (can be an existing
     # directory, including one with existing data -- all monitor files
