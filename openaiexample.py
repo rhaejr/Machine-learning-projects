@@ -167,8 +167,8 @@ def train_model(training_data, model=False):
 
     if not model:
         model = neural_network_model(input_size = len(X[0]))
-    
-    model.fit({'input': X}, {'targets': y}, n_epoch=3, snapshot_step=500, show_metric=True, run_id='openai_learning')
+        model.load('200stick.model')
+    model.fit({'input': X}, {'targets': y}, n_epoch=15, snapshot_step=500, show_metric=True, run_id='openai_learning')
     return model
 
 
@@ -176,16 +176,17 @@ def train_model(training_data, model=False):
 
 
 model = train_model(training_data)
+# model.load('200stick.model')
 
 scores = []
 choices = []
-for each_game in range(10):
+for each_game in range(100):
     score = 0
     game_memory = []
     prev_obs = []
     env.reset()
     for _ in range(goal_steps):
-        env.render()
+        # env.render()
 
         if len(prev_obs) == 0:
             action = random.randrange(0, 2)
@@ -205,5 +206,5 @@ for each_game in range(10):
 print('Average Score:', sum(scores) / len(scores))
 print('choice 1:{}  choice 0:{}'.format(choices.count(1) / len(choices), choices.count(0) / len(choices)))
 print(score_requirement)
-model.save('stick.model'.format(str(sum(scores) / len(scores))))
+# model.save('stick.model'.format(str(sum(scores) / len(scores))))
 
