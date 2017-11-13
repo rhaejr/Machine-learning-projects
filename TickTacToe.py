@@ -3,16 +3,17 @@ import re, random
 
 class TicTacToe:
     def __init__(self):
-        self.board = [[' ',' ',' '],
-                      [' ',' ',' '],
-                      [' ',' ',' ']]
-
+        self.board = [[' ', ' ', ' '],
+                      [' ', ' ', ' '],
+                      [' ', ' ', ' ']]
+        self.moves = {'1': (0, 0), '2': (0, 1), '3': (0, 2), '4': (1, 0), '5': (1, 1), '6': (1, 2), '7': (2, 0),
+                      '8': (2, 1), '9': (2, 2)}
         self.positions_groups = (
-        [[(x, y) for y in range(3)] for x in range(3)] +  # horizontals
-        [[(x, y) for x in range(3)] for y in range(3)] +  # verticals
-        [[(d, d) for d in range(3)]] +  # diagonal from top-left to bottom-right
-        [[(2 - d, d) for d in range(3)]]  # diagonal from top-right to bottom-left
-)
+            [[(x, y) for y in range(3)] for x in range(3)] +  # horizontals
+            [[(x, y) for x in range(3)] for y in range(3)] +  # verticals
+            [[(d, d) for d in range(3)]] +  # diagonal from top-left to bottom-right
+            [[(2 - d, d) for d in range(3)]]  # diagonal from top-right to bottom-left
+        )
         self.play_game()
 
     def get_winner(self, board):
@@ -25,7 +26,7 @@ class TicTacToe:
     def play_game(self):
         for i in range(9):
             if i % 2 == 0:
-                x,y = self.coords('X')
+                x, y = self.coords('X')
                 self.board[x][y] = 'X'
             else:
                 x, y = self.coords('O')
@@ -36,7 +37,6 @@ class TicTacToe:
             print(self.board[2])
 
             if self.get_winner(self.board) == 'X' or self.get_winner(self.board) == 'O':
-
                 break
         print(self.get_winner(self.board))
 
@@ -45,11 +45,12 @@ class TicTacToe:
 
         while not correct:
             if player == 'O':
-                move = '{},{}'.format(random.randint(0,2), random.randint(0,2))
+                move = '{}'.format(random.randint(1,9))
             else:
-                move = input('{}[x,y]: '.format(player))
-            correct = bool(re.match('^[0-2],[0-2]$', move))
-            x,y = move.split(',')
+                # move = '{}'.format(random.randint(1, 9))
+                move = input('{}[1-9]: '.format(player))
+            correct = bool(re.match('^[1-9]$', move))
+            x, y = self.moves[str(move)]
             try:
                 if self.board[int(x)][int(y)] != ' ':
                     correct = False
@@ -59,8 +60,7 @@ class TicTacToe:
         return int(x), int(y)
 
 
-
 if __name__ == '__main__':
-    while True:
-        TicTacToe()
-        input()
+    # while True:
+    TicTacToe()
+        # input()
