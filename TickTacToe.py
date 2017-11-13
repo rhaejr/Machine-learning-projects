@@ -23,11 +23,12 @@ class TicTacToe:
             if len(set(values)) == 1 and values[0]:
                 return values[0]
 
-    def play_game(self):
+    def play_game(self, player='player'):
         for i in range(9):
             if i % 2 == 0:
-                x, y = self.coords('X')
-                self.board[x][y] = 'X'
+                if player == 'player':
+                    x, y = self.coords('X')
+                    self.board[x][y] = 'X'
             else:
                 x, y = self.coords('O')
                 self.board[x][y] = 'O'
