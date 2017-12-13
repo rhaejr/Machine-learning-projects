@@ -4,3 +4,7 @@
 .idea/misc.xml
 .idea/Machine-learning-projects.iml
 chatbot/RC_2015-01.json
+*.to
+*.from
+chatbot/test.zip
+chatbot/2015-01.db
