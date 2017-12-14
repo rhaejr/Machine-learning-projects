@@ -4,7 +4,14 @@
 .idea/misc.xml
 .idea/Machine-learning-projects.iml
 chatbot/RC_2015-01.json
+<<<<<<< HEAD
 chatbot/data/
 chatbot/model/
 chatbot/2015-05.db
 chatbot/2017-03.db
+=======
+*.to
+*.from
+chatbot/test.zip
+chatbot/2015-01.db
+>>>>>>> 4518a957d44ae980d1249944b94731e60dfdbe22
